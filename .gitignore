@@ -26,3 +26,6 @@ products-from-docx.txt
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
+.env*
