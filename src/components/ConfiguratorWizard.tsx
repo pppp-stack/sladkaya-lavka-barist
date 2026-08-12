@@ -1,5 +1,29 @@
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+  type ComponentType,
+  type FormEvent,
+} from "react";
 import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Baby,
+  Briefcase,
+  Building2,
+  Check,
+  Flower2,
+  Gift,
+  GraduationCap,
+  Handshake,
+  Loader2,
+  PartyPopper,
+  Shield,
+  Sparkles,
+  TreePine,
+  Users,
+} from "lucide-react";
 import { useContent } from "../content/ContentProvider";
 import {
   budgetRange,
@@ -29,18 +53,18 @@ const emptyAnswers: ConfiguratorAnswers = {
 
 type Phase = "steps" | "matching" | "results" | "success";
 
-const ICONS: Record<string, string> = {
-  users: "U",
-  handshake: "H",
-  briefcase: "B",
-  baby: "K",
-  sparkles: "*",
-  tree: "N",
-  shield: "S",
-  flower: "F",
-  graduation: "G",
-  building: "C",
-  party: "P",
+const ICONS: Record<string, ComponentType<{ className?: string }>> = {
+  users: Users,
+  handshake: Handshake,
+  briefcase: Briefcase,
+  baby: Baby,
+  sparkles: Sparkles,
+  tree: TreePine,
+  shield: Shield,
+  flower: Flower2,
+  graduation: GraduationCap,
+  building: Building2,
+  party: PartyPopper,
 };
 
 function sleep(ms: number) {
@@ -168,7 +192,9 @@ export function ConfiguratorWizard() {
   if (phase === "success") {
     return (
       <div className="cfg-card cfg-success">
-        <div className="cfg-check">✓</div>
+        <div className="cfg-check">
+          <Check size={28} strokeWidth={2.5} />
+        </div>
         <h2>Заявка принята</h2>
         <p>
           Мы расскажем о подобранных наборах и свяжемся с вами в ближайшее
@@ -207,7 +233,7 @@ export function ConfiguratorWizard() {
             {phase === "results" && "Готово"}
           </p>
         </div>
-        <span className="cfg-gift" aria-hidden="true" />
+        <Gift className="cfg-gift-icon" size={24} strokeWidth={1.75} aria-hidden />
       </div>
 
       <div className="cfg-progress" aria-hidden="true">
@@ -231,6 +257,7 @@ export function ConfiguratorWizard() {
           <div className="cfg-options">
             {current.options.map((option) => {
               const active = answers[current.id] === option.value;
+              const Icon = option.icon ? ICONS[option.icon] : undefined;
               return (
                 <button
                   key={option.value}
@@ -238,13 +265,15 @@ export function ConfiguratorWizard() {
                   className={`cfg-option${active ? " is-active" : ""}`}
                   onClick={() => selectOption(option.value)}
                 >
-                  {option.icon && (
+                  {Icon && (
                     <span className="cfg-option-icon">
-                      {ICONS[option.icon] ?? "•"}
+                      <Icon className="cfg-lucide" />
                     </span>
                   )}
                   <span>{option.label}</span>
-                  {active && <span className="cfg-option-check">✓</span>}
+                  {active && (
+                    <Check className="cfg-option-check" size={18} strokeWidth={2.5} />
+                  )}
                 </button>
               );
             })}
@@ -256,7 +285,8 @@ export function ConfiguratorWizard() {
               onClick={goBack}
               disabled={step === 0}
             >
-              ← Назад
+              <ArrowLeft size={16} />
+              Назад
             </button>
             <button
               type="button"
@@ -264,7 +294,8 @@ export function ConfiguratorWizard() {
               onClick={() => void goNext()}
               disabled={!canNext}
             >
-              {step === totalSteps - 1 ? "Подобрать наборы →" : "Далее →"}
+              {step === totalSteps - 1 ? "Подобрать наборы" : "Далее"}
+              <ArrowRight size={16} />
             </button>
           </div>
         </div>
@@ -273,7 +304,9 @@ export function ConfiguratorWizard() {
       {phase === "results" && (
         <div className="cfg-results">
           <div className="cfg-results-banner">
-            <div className="cfg-check">✓</div>
+            <div className="cfg-check">
+              <Check size={28} strokeWidth={2.5} />
+            </div>
             <h2>Мы уже подобрали для вас подходящие наборы</h2>
             <p>
               Оставьте ваши данные — и мы расскажем о них, подскажем бюджет и
@@ -336,16 +369,22 @@ export function ConfiguratorWizard() {
               {error && <p className="cfg-error">{error}</p>}
               <div className="cfg-nav">
                 <button type="button" className="pill" onClick={goBack}>
-                  ← Назад
+                  <ArrowLeft size={16} />
+                  Назад
                 </button>
                 <button
                   type="submit"
                   className="pill pill-accent"
                   disabled={submitting}
                 >
-                  {submitting
-                    ? "Отправка…"
-                    : "Получить коммерческое предложение"}
+                  {submitting ? (
+                    <>
+                      <Loader2 size={16} className="cfg-spin-icon" />
+                      Отправка…
+                    </>
+                  ) : (
+                    "Получить коммерческое предложение"
+                  )}
                 </button>
               </div>
             </form>

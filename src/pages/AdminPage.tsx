@@ -242,7 +242,8 @@ export function AdminPage() {
           <div className="admin-grid">
             <Field label="Eyebrow" value={content.about.eyebrow} onChange={(v) => patch("about", { ...content.about, eyebrow: v })} />
             <Field label="Заголовок" value={content.about.title} onChange={(v) => patch("about", { ...content.about, title: v })} />
-            <Field label="Картинка (URL)" value={content.about.mediaImage} onChange={(v) => patch("about", { ...content.about, mediaImage: v })} />
+            <Field label="Картинка сверху (URL)" value={content.about.mediaImage} onChange={(v) => patch("about", { ...content.about, mediaImage: v })} />
+            <Field label="Картинка снизу (URL)" value={content.about.mediaImageBottom} onChange={(v) => patch("about", { ...content.about, mediaImageBottom: v })} />
             <Area
               label="Вкладки (по строке)"
               value={content.about.tabs.join("\n")}

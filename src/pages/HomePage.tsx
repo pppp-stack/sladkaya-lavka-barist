@@ -122,11 +122,11 @@ export function HomePage() {
 
       <Reveal>
         <section className="section section-light" id="about">
-          <div className="container">
+          <div className="container about-container">
             <div className="section-head">
               <div>
                 <div className="eyebrow">{about.eyebrow}</div>
-                <h2>{about.title}</h2>
+                <h2 className="about-title">{about.title}</h2>
               </div>
               <Link className="pill pill-outline" to="/catalog">
                 Смотреть наборы
@@ -152,8 +152,12 @@ export function HomePage() {
                 <p>{review.text}</p>
                 <div className="author">{review.author}</div>
               </article>
-              <div className="media-card">
+              <div className="media-card media-card-stack">
                 <img src={about.mediaImage} alt={about.title} />
+                <img
+                  src={about.mediaImageBottom}
+                  alt="Сборка подарочного набора"
+                />
               </div>
               <div className="media-card">
                 <AboutVideo />

@@ -48,20 +48,51 @@ function loadContent(): SiteContent {
         ...parsed.about,
         tabs: parsed.about?.tabs ?? defaultContent.about.tabs,
         reviews: parsed.about?.reviews ?? defaultContent.about.reviews,
+        mediaImageBottom:
+          parsed.about?.mediaImageBottom ??
+          defaultContent.about.mediaImageBottom,
       },
       promo: {
         ...defaultContent.promo,
         ...parsed.promo,
-        items: parsed.promo?.items ?? defaultContent.promo.items,
+        items: (() => {
+          const items = parsed.promo?.items ?? defaultContent.promo.items;
+          const hasFree = items.some((i) =>
+            i.title.toLowerCase().includes("бесплатная доставка"),
+          );
+          if (hasFree) return items;
+          return [defaultContent.promo.items[0], ...items];
+        })(),
       },
       contacts: {
         ...defaultContent.contacts,
         ...parsed.contacts,
-        addresses:
-          parsed.contacts?.addresses ?? defaultContent.contacts.addresses,
+        addresses: (() => {
+          const addresses =
+            parsed.contacts?.addresses ?? defaultContent.contacts.addresses;
+          return addresses.map((a, i) => {
+            if (
+              i === 0 &&
+              /самовывоз по согласованию|по согласованию/i.test(a.address)
+            ) {
+              return defaultContent.contacts.addresses[0];
+            }
+            if (i === 1 && /сдэк|доставка сдэк/i.test(a.address)) {
+              return defaultContent.contacts.addresses[1];
+            }
+            return a;
+          });
+        })(),
         socials: parsed.contacts?.socials ?? defaultContent.contacts.socials,
         messengers:
           parsed.contacts?.messengers ?? defaultContent.contacts.messengers,
+        mapNote:
+          parsed.contacts?.mapNote &&
+          !/по договорённости|по всей россии · самовывоз по/i.test(
+            parsed.contacts.mapNote,
+          )
+            ? parsed.contacts.mapNote
+            : defaultContent.contacts.mapNote,
       },
       corporate: { ...defaultContent.corporate, ...parsed.corporate },
       products: parsed.products?.length

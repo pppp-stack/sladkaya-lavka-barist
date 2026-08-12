@@ -43,6 +43,7 @@ export type SiteContent = {
     tabs: string[];
     reviews: SiteReview[];
     mediaImage: string;
+    mediaImageBottom: string;
   };
   promo: {
     eyebrow: string;

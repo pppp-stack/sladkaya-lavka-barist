@@ -502,6 +502,16 @@ img {
   max-width: 14ch;
 }
 
+.about-title {
+  max-width: none;
+  white-space: nowrap;
+  font-size: clamp(1.55rem, 2.8vw, 2.4rem);
+}
+
+.about-container {
+  width: min(980px, calc(100% - 2.5rem));
+}
+
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -511,16 +521,35 @@ img {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr 1fr;
-  gap: 1rem;
-  min-height: 420px;
+  grid-template-columns: 0.85fr 1fr 0.95fr;
+  gap: 0.75rem;
+  min-height: 340px;
 }
 
 .review-card,
 .media-card {
-  border-radius: 28px;
+  border-radius: 22px;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 340px;
+}
+
+.media-card-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.55rem;
+  background: transparent;
+  overflow: visible;
+  padding: 0;
+  min-height: 340px;
+}
+
+.media-card-stack img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
 }
 
 .review-card {
@@ -1135,7 +1164,22 @@ img {
 
   .review-card,
   .media-card {
-    min-height: 320px;
+    min-height: 280px;
+  }
+
+  .media-card-stack {
+    min-height: 360px;
+  }
+
+  .about-title {
+    white-space: normal;
+  }
+
+  .about-video,
+  .about-video-el,
+  .about-video.is-fallback img {
+    min-height: 280px;
+    height: 280px;
   }
 
   .catalog-head {
@@ -1166,7 +1210,7 @@ img {
 .about-video-el {
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  min-height: 340px;
   object-fit: cover;
   display: block;
   border: 0;
@@ -1644,6 +1688,42 @@ img {
     linear-gradient(315deg, var(--accent) 40%, transparent 41%) bottom right / 50% 50% no-repeat,
     var(--accent-soft);
   box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.cfg-gift-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cfg-lucide {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cfg-option-icon {
+  flex: 0 0 auto;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(12, 12, 11, 0.06);
+  color: var(--ink);
+}
+
+.cfg-option.is-active .cfg-option-icon {
+  background: var(--accent);
+  color: #1a1612;
+}
+
+.cfg-option-check {
+  margin-left: auto;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.cfg-spin-icon {
+  animation: cfg-spin 1s linear infinite;
 }
 
 .cfg-progress {
