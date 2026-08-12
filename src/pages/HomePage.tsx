@@ -46,7 +46,7 @@ export function HomePage() {
 
   return (
     <>
-      <section className="hero screen-block" id="top">
+      <section className="hero" id="top">
         <div className="container hero-grid">
           <div>
             <div className="hero-kicker">{hero.kicker}</div>
@@ -100,9 +100,9 @@ export function HomePage() {
         </div>
       </section>
 
-      <Reveal className="screen-reveal">
-        <section className="section section-catalog screen-block" id="popular">
-          <div className="container screen-inner">
+      <Reveal>
+        <section className="section section-catalog" id="popular">
+          <div className="container">
             <div className="catalog-head">
               <h2>Популярная продукция</h2>
               <Link className="catalog-link" to="/catalog">
@@ -120,9 +120,9 @@ export function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal className="screen-reveal">
-        <section className="section section-light screen-block" id="about">
-          <div className="container screen-inner">
+      <Reveal>
+        <section className="section section-light" id="about">
+          <div className="container">
             <div className="section-head">
               <div>
                 <div className="eyebrow">{about.eyebrow}</div>
@@ -163,9 +163,13 @@ export function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal className="screen-reveal">
-        <section className="section section-light screen-block" id="promo">
-          <div className="container screen-inner">
+      <Reveal>
+        <section
+          className="section section-light"
+          id="promo"
+          style={{ paddingTop: 0 }}
+        >
+          <div className="container">
             <div className="section-head">
               <div>
                 <div className="eyebrow">{promo.eyebrow}</div>
@@ -197,12 +201,11 @@ export function HomePage() {
         </section>
       </Reveal>
 
-      <Reveal className="screen-reveal">
+      <Reveal>
         <ContactsSection />
       </Reveal>
-
-      <section className="section section-dark screen-block" id="corporate">
-        <div className="container screen-inner">
+      <section className="section section-dark" id="corporate">
+        <div className="container">
           <div className="section-head">
             <div>
               <div className="eyebrow" style={{ color: "var(--accent)" }}>

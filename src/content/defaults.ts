@@ -56,7 +56,7 @@ export const defaultContent: SiteContent = {
         author: "Мария К.",
       },
     ],
-    mediaImage: "/images/about-media.jpg",
+    mediaImage: "/catalog/posylka-iz-90h/01.png",
   },
   promo: {
     eyebrow: "Выгодно сейчас",
