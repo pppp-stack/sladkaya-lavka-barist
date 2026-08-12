@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { AdminPage } from "./pages/AdminPage";
 import { CatalogPage } from "./pages/CatalogPage";
+import { ConfiguratorPage } from "./pages/ConfiguratorPage";
 import { HomePage } from "./pages/HomePage";
 
 function AppShell() {
@@ -14,6 +15,7 @@ function AppShell() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/configurator" element={<ConfiguratorPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </>

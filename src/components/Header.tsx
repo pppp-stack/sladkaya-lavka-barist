@@ -4,7 +4,8 @@ import { useContent } from "../content/ContentProvider";
 const links = [
   { to: "/", label: "Главная", end: true },
   { to: "/catalog", label: "Каталог" },
-  { to: "/#corporate", label: "Корпоративным", featured: true },
+  { to: "/configurator", label: "Конфигуратор", featured: true },
+  { to: "/#corporate", label: "Корпоративным" },
   { to: "/#about", label: "О компании" },
   { to: "/#promo", label: "Акции" },
   { to: "/#contacts", label: "Контакты" },

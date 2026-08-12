@@ -75,7 +75,7 @@ export function HomePage() {
                 <img src={hero.sideImage} alt="" />
               </div>
               <div className="side-links">
-                <Link className="side-tile" to="/catalog">
+                <Link className="side-tile" to="/configurator">
                   <span>{hero.tileCatalog}</span>
                   <i aria-hidden="true">↓</i>
                 </Link>
