@@ -10,8 +10,8 @@ export function ContactsSection() {
   const { brand, contacts } = content;
 
   return (
-    <section className="section section-contacts screen-block" id="contacts">
-      <div className="container screen-inner">
+    <section className="section section-contacts" id="contacts">
+      <div className="container">
         <div className="catalog-crumbs">
           <a href="/#top">Главная</a>
           <span>/</span>

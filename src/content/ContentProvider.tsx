@@ -48,11 +48,6 @@ function loadContent(): SiteContent {
         ...parsed.about,
         tabs: parsed.about?.tabs ?? defaultContent.about.tabs,
         reviews: parsed.about?.reviews ?? defaultContent.about.reviews,
-        mediaImage:
-          !parsed.about?.mediaImage ||
-          parsed.about.mediaImage === "/catalog/posylka-iz-90h/01.png"
-            ? defaultContent.about.mediaImage
-            : parsed.about.mediaImage,
       },
       promo: {
         ...defaultContent.promo,
