@@ -18,27 +18,11 @@ export function ProductCard({ product, onOpen }: Props) {
           <img src={product.images[0]} alt={product.name} />
         </div>
         <h3>{product.name}</h3>
-        <div className="nostalgia-scale" aria-label={`Ностальгия ${product.nostalgia} из 5`}>
-          <span>ностальгия</span>
-          <div className="candy-row">
-            {Array.from({ length: 5 }, (_, i) => (
-              <span
-                key={i}
-                className={i < product.nostalgia ? "candy is-on" : "candy"}
-              />
-            ))}
-          </div>
-        </div>
         <ul className="product-stats">
           <li>
             <span>Сладость</span>
             <span className="dots" aria-hidden="true" />
             <strong>{product.stats.sweetness}</strong>
-          </li>
-          <li>
-            <span>Ностальгия</span>
-            <span className="dots" aria-hidden="true" />
-            <strong>{product.stats.nostalgia}</strong>
           </li>
           <li>
             <span>Разнообразие</span>

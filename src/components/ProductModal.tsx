@@ -84,17 +84,6 @@ export function ProductModal({ product, onClose }: Props) {
 
           <div className="product-modal-info">
             <h2>{product.name}</h2>
-            <div className="modal-nostalgia">
-              <span>Ностальгия</span>
-              <div className="candy-row">
-                {Array.from({ length: 5 }, (_, i) => (
-                  <span
-                    key={i}
-                    className={i < product.nostalgia ? "candy is-on" : "candy"}
-                  />
-                ))}
-              </div>
-            </div>
 
             <div className="modal-volume">
               <span className="label">Объём</span>
@@ -112,11 +101,6 @@ export function ProductModal({ product, onClose }: Props) {
                   <span>Сладость</span>
                   <span className="dots" />
                   <strong>{product.stats.sweetness}</strong>
-                </li>
-                <li>
-                  <span>Ностальгия</span>
-                  <span className="dots" />
-                  <strong>{product.stats.nostalgia}</strong>
                 </li>
                 <li>
                   <span>Разнообразие</span>

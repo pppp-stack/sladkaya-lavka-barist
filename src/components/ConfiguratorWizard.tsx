@@ -312,12 +312,6 @@ export function ConfiguratorWizard() {
               Оставьте ваши данные — и мы расскажем о них, подскажем бюджет и
               подготовим коммерческое предложение.
             </p>
-            {estimate.max > 0 && (
-              <p className="cfg-estimate">
-                Ориентир по бюджету: {estimate.min.toLocaleString("ru-RU")}–
-                {estimate.max.toLocaleString("ru-RU")} ₽
-              </p>
-            )}
           </div>
 
           <div className="cfg-form-block">

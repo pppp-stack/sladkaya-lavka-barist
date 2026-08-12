@@ -72,15 +72,16 @@ export function ContactsSection() {
 
         <div className="contact-map-head">
           <h3>{contacts.mapTitle}</h3>
-          <a className="pill pill-outline" href="/#corporate">
+          <a className="pill pill-outline" href="/corporate">
             {contacts.reviewLabel}
           </a>
         </div>
         <div className="contact-map">
           <iframe
-            title="Карта"
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A0&amp;source=constructor"
+            title="Карта — Шуваловский парк, 1Г"
+            src="https://yandex.ru/map-widget/v1/?ll=30.2338%2C60.0435&z=16&pt=30.2338%2C60.0435%2Cpm2rdm&l=map&lang=ru_RU"
             loading="lazy"
+            allowFullScreen
           />
           <div className="contact-map-fallback">{contacts.mapNote}</div>
         </div>

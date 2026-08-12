@@ -52,18 +52,23 @@ function loadContent(): SiteContent {
           parsed.about?.mediaImageBottom ??
           defaultContent.about.mediaImageBottom,
       },
-      promo: {
-        ...defaultContent.promo,
-        ...parsed.promo,
-        items: (() => {
-          const items = parsed.promo?.items ?? defaultContent.promo.items;
-          const hasFree = items.some((i) =>
-            i.title.toLowerCase().includes("бесплатная доставка"),
-          );
-          if (hasFree) return items;
-          return [defaultContent.promo.items[0], ...items];
-        })(),
-      },
+      promo: (() => {
+        const merged = {
+          ...defaultContent.promo,
+          ...parsed.promo,
+        };
+        const items = parsed.promo?.items ?? defaultContent.promo.items;
+        const hasBonus =
+          /бонус|балл/i.test(`${merged.mainTitle} ${merged.mainText}`) ||
+          items.some((i) => /бонус|балл/i.test(`${i.title} ${i.text}`));
+        if (hasBonus) {
+          return structuredClone(defaultContent.promo);
+        }
+        return {
+          ...merged,
+          items,
+        };
+      })(),
       contacts: {
         ...defaultContent.contacts,
         ...parsed.contacts,

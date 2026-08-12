@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { AboutVideo } from "../components/AboutVideo";
+import { BrandLogo } from "../components/BrandLogo";
 import { ContactsSection } from "../components/ContactsSection";
 import { ProductCard } from "../components/ProductCard";
 import { ProductModal } from "../components/ProductModal";
@@ -254,7 +255,7 @@ export function HomePage() {
           <div className="footer-grid">
             <div>
               <div className="footer-brand">
-                <div className="logo">{brand.logoLetter}</div>
+                <BrandLogo name={brand.name} />
                 <strong>{brand.name}</strong>
               </div>
               <p>

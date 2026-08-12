@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { AdminPage } from "./pages/AdminPage";
 import { CatalogPage } from "./pages/CatalogPage";
 import { ConfiguratorPage } from "./pages/ConfiguratorPage";
+import { CorporatePage } from "./pages/CorporatePage";
 import { HomePage } from "./pages/HomePage";
 
 function AppShell() {
@@ -16,6 +17,7 @@ function AppShell() {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/configurator" element={<ConfiguratorPage />} />
+        <Route path="/corporate" element={<CorporatePage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </>

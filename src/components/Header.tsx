@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
+import { BrandLogo } from "./BrandLogo";
 import { useContent } from "../content/ContentProvider";
 
 const links = [
   { to: "/", label: "Главная", end: true },
   { to: "/catalog", label: "Каталог" },
   { to: "/configurator", label: "Конфигуратор", featured: true },
-  { to: "/#corporate", label: "Корпоративным" },
+  { to: "/corporate", label: "Корпоративным" },
   { to: "/#about", label: "О компании" },
   { to: "/#promo", label: "Акции" },
   { to: "/#contacts", label: "Контакты" },
@@ -22,8 +23,8 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link className="logo" to="/" aria-label={brand.name}>
-          {brand.logoLetter}
+        <Link className="logo-link" to="/" aria-label={brand.name}>
+          <BrandLogo name={brand.name} />
         </Link>
         <nav className="nav" aria-label="Основное меню">
           {links.map((item) =>
@@ -55,9 +56,9 @@ export function Header() {
           <a className="header-phone" href={telHref(brand.phone)}>
             {brand.phone}
           </a>
-          <a className="pill pill-accent header-cta" href="/#corporate">
+          <Link className="pill pill-accent header-cta" to="/corporate">
             {header.callButtonLabel}
-          </a>
+          </Link>
         </div>
       </div>
     </header>
